@@ -8,6 +8,7 @@ const Header = () => {
           <Link to="/" className='text-xl text-gray-700 font-semibold'>E-commerce</Link>
           <ul className='flex space-x-8 text-gray-700'>
             <Link to="/" className='hover:text-pink-500' >Home</Link>
+            <Link to="/products" className='hover:text-pink-500' >Products</Link>
             <Link to="/about" className='hover:text-pink-500' >About</Link>
             <Link to="/contact" className='hover:text-pink-500' >Contact</Link>
 
