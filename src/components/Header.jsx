@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className="fixed top-0 left-0 right-0 bg-white bg-opacity-60 backdrop-blur-md shadow z-10">
       <div className="max-w-4xl mx-auto flex justify-between items-center p-4">
-          <Link to="/" className='text-xl text-gray-700 font-semibold'>E-commerce</Link>
+          <Link to="/" className='text-xl text-gray-700 font-semibold'>Logo</Link>
           <ul className='flex space-x-8 text-gray-700'>
             <Link to="/" className='hover:text-pink-500' >Home</Link>
             <Link to="/products" className='hover:text-pink-500' >Products</Link>
