@@ -5,7 +5,7 @@ const ProductDetails = () => {
    const product = {
       "id": 78,
       "title": "Apple MacBook Pro",
-      "description": "The MacBook Pro 14 Inch in Space Grey is a powerful and sleek laptop, featuring Apple's M1 Pro chip for exceptional performance and a stunning Retina display.",
+      "description": "The MacBook Pro 14.",
       "category": "laptops",
       "price": 1999.99,
       "discountPercentage": 9.25,
@@ -60,7 +60,10 @@ const ProductDetails = () => {
       "images": [
          "https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/1.png",
          "https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/2.png",
-         "https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/3.png"
+         "https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/3.png",
+         "https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/2.png",
+         "https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/3.png",
+         "https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/1.png",
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/laptops/Apple%20MacBook%20Pro%2014%20Inch%20Space%20Grey/thumbnail.png"
    }
@@ -74,7 +77,7 @@ const ProductDetails = () => {
         <h1 className="text-3xl font-bold mb-6">{product.title}</h1>
 
         <div className="md:flex ">
-         <div className="md:w-1/2 pr-4 mb-6 md:mb-0">
+            <div className="md:w-1/2 pr-4 mb-6 md:mb-0">
             <img className="w-full h-96 object-cover rounded-lg shadow-md"
             src={product.thumbnail} alt={product.title} />
             {/* image gallery */}
@@ -83,8 +86,26 @@ const ProductDetails = () => {
                   <img className="w-24 object-cover h-24 rounded-lg shadow-md cursor-pointer" key={idx} src={images} alt={product.title} />
                ))}
             </div>
+             </div>
+           <div className="w-1/2 pl-4">
+               <p className="text-gray-600 mb-4">{product.description}</p>
+                   <div className="flex justify-between items-center   mb-4">
+               <span className="text-pink-600 font-bold  text-2xl">${product.price.toFixed()}</span>
+                 <span className="text-sm text-gray-500">
+                     {product.stock > 0 ? `${product.stock} in stock` : "out of stock"}
+                </span>
+             </div>
+             <div className="mt-4">
+            <span className="text-yellow-500">
+                {"⭐".repeat(Math.round(product.rating))}
+            </span>
+            <span className="text-gray-300">
+                {"⭐".repeat(Math.round(5 -product.rating))}
+            </span>
+        </div>
+
+        <button className="bg-pink-600 text-white mt-6 px-5 py-2 rounded-lg shadow hover:bg-pink-900 transition-colors duration-200">Add To Cart</button>
          </div>
-         <div></div>
         </div>
      </div>
 )
