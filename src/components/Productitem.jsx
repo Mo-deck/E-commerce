@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 
 export const Productitem = ({ product }) => {
   return (
-  <div className="border border-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-200 ease-in">
+  <Link
+     to={`/product-details/${product.id}`}
+      className="border border-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-200 ease-in">
 
-     <img className="w-full h-48 object-cover" src={product.thumbnail} alt={product.name} />
+     <img className="w-full h-48 object-cover" src={product.  thumbnail} alt={product.name} />
 
     <div className="p-4">
         <h2 className="text-xl font-bold mb-2">{product.title}</h2>
@@ -27,7 +30,7 @@ export const Productitem = ({ product }) => {
 
     </div>
 
-</div>
+</Link>
   )
 }
 
