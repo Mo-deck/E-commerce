@@ -21,7 +21,7 @@ export const Productitem = ({ product }) => {
 
         <div className="mt-4">
             <span className="text-yellow-500">
-                {"*".repeat(Math.round(product.rating))}
+                {"⭐".repeat(Math.round(product.rating))}
             </span>
             <span className="text-gray-300">
                 {"⭐".repeat(Math.round(5 -product.rating))}
