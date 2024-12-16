@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaTrashCan } from 'react-icons/fa6';
 
 const Cartitems = () =>{
        const products = [
@@ -83,6 +84,11 @@ const Cartitems = () =>{
                                     <input type="number" className="w-16 border border-gray-200 rounded-md p-2 text-center" />
                                 </div>
                             </div>
+
+                            {/* Delete button */}
+                            <button className="text-red-500 hover:text-red-700 transition-colors duration-200 ease-in-out">
+                            <FaTrashCan className="w-6 h-6"/>
+                            </button>
                         </div>
                     </div>
                 </div>
