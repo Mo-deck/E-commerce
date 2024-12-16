@@ -19,38 +19,36 @@ const Cartitems = () =>{
                 ],
                 "thumbnail": "https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/thumbnail.png"
             },
+
             {
-                "id": 79,
-                "title": "Asus Zenbook Pro Dual Screen Laptop",
-                "description": "The Asus Zenbook Pro Dual Screen Laptop is a high-performance device with dual screens, providing productivity and versatility for creative professionals.",
-                "category": "laptops",
-                "price": 1799.99,
-                "discountPercentage": 9.21,
-                "rating": 3.14,
-                "stock": 38,
-                "brand": "Asus",
+                "id": 86,
+                "title": "Man Short Sleeve Shirt",
+                "description": "The Man Short Sleeve Shirt is a breezy and stylish option for warm days. With a comfortable fit and short sleeves, it's perfect for a laid-back yet polished look.",
+                "category": "mens-shirts",
+                "price": 19.99,
+                "discountPercentage": 8.65,
+                "rating": 4.62,
+                "stock": 20,
+                "brand": "Casual Comfort",
                 "images": [
-                    "https://cdn.dummyjson.com/products/images/laptops/Asus%20Zenbook%20Pro%20Dual%20Screen%20Laptop/1.png",
-                    "https://cdn.dummyjson.com/products/images/laptops/Asus%20Zenbook%20Pro%20Dual%20Screen%20Laptop/2.png",
-                    "https://cdn.dummyjson.com/products/images/laptops/Asus%20Zenbook%20Pro%20Dual%20Screen%20Laptop/3.png"
+                    "https://cdn.dummyjson.com/products/images/mens-shirts/Man%20Short%20Sleeve%20Shirt/4.png"
                 ],
-                "thumbnail": "https://cdn.dummyjson.com/products/images/laptops/Asus%20Zenbook%20Pro%20Dual%20Screen%20Laptop/thumbnail.png"
+                "thumbnail": "https://cdn.dummyjson.com/products/images/mens-shirts/Man%20Short%20Sleeve%20Shirt/thumbnail.png"
             },
             {
-                "id": 80,
-                "title": "Huawei Matebook X Pro",
-                "description": "The Huawei Matebook X Pro is a slim and stylish laptop with a high-resolution touchscreen display, offering a premium experience for users on the go.",
-                "category": "laptops",
-                "price": 1399.99,
-                "discountPercentage": 15.25,
-                "rating": 4.62,
-                "stock": 34,
-
-                "brand": "Huawei",
+                "id": 89,
+                "title": "Nike Baseball Cleats",
+                "description": "Nike Baseball Cleats are designed for maximum traction and performance on the baseball field. They provide stability and support for players during games and practices.",
+                "category": "mens-shoes",
+                "price": 79.99,
+                "discountPercentage": 11.4,
+                "rating": 4.01,
+                "stock": 14,
+                "brand": "Nike",
                 "images": [
-                    "https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/3.png"
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/4.png"
                 ],
-                "thumbnail": "https://cdn.dummyjson.com/products/images/laptops/Huawei%20Matebook%20X%20Pro/thumbnail.png"
+                "thumbnail": "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/thumbnail.png"
             }
         ];
         
@@ -66,6 +64,27 @@ const Cartitems = () =>{
             {products.map((product) => (
                 <div className="flex items-start space-x-4 mb-6">
                     <img className="w-24 h-24 object-cover rounded-lg" src={product.thumbnail} alt={product.title} />
+
+                    {/*product info  */}
+                    <div  className="flex flex-col justify-between flex-1">
+                        <h3 className="text-lg font-semibold">{product.title}</h3>
+                        <div className="text-sm text-gray-500">
+                             {product.description}   
+                        </div>
+                        {/* price and quantity */}
+                        <div className="flex items-center justify-between mt-2">
+                            {/* price and quantity */}
+                            <div className="flex items-center space-x-2">
+                                {/* price */}
+                                <span className="text-lg text-pink-600 font-semibold">${product.price.toFixed()}</span>
+                                {/* quantity */}
+                                <div className=" flex items-center space-x-2">
+                                    <label htmlFor="" className="text-sm font-semibold">Quantity</label>
+                                    <input type="number" className="w-16 border border-gray-200 rounded-md p-2 text-center" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>
