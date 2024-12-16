@@ -19,7 +19,7 @@ const ProductDetails = () => {
          }
       }
       getProduct()
-   }, [])
+   }, [id])
 
    
 
@@ -53,7 +53,7 @@ const ProductDetails = () => {
                      {product.stock > 0 ? `${product.stock} in stock` : "out of stock"}
                 </span>
              </div>
-             <div className="mt-4">
+             <div className="mb-4">
             <span className="text-yellow-500">
                 {"⭐".repeat(Math.round(product.rating))}
             </span>
