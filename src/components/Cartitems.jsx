@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaTrashCan } from 'react-icons/fa6';
+import Payments from './Payments';
 
 const Cartitems = () =>{
        const products = [
@@ -94,6 +95,9 @@ const Cartitems = () =>{
                 </div>
             ))}
         </div>
+
+               {/* payment */}
+              <Payments />
     </div>
   )
 }
