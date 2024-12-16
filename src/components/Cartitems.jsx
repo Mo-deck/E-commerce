@@ -88,7 +88,7 @@ const Cartitems = () =>{
 
                             {/* Delete button */}
                             <button className="text-red-500 hover:text-red-700 transition-colors duration-200 ease-in-out">
-                            <FaTrashCan className="w-6 h-6"/>
+                            <FaTrashCan className="w-5 h-5"/>
                             </button>
                         </div>
                     </div>

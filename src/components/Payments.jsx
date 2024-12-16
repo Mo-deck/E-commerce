@@ -15,7 +15,21 @@ const Payments = () => {
                     <span>Cash Delivery</span>
                 </label>
             </div>
-            
+            <div className="mt-6 border-t pt-6">
+                <div className="flex justify-between items-center mb-4">
+                    <span className="text-lg font-semibold text-gray-600">Subtotal</span>
+                    <span className="text-lg font-semibold text-gray-600">$2525</span>
+                </div>
+                <div className="flex justify-between items-center mb-4">
+                <span className="text-2xl font-semibold text-pink-600">Subtotal</span>
+                <span className="text-2xl font-semibold text-pink-600">$2525</span>
+                </div>
+
+                {/* procceed */}
+                <div className="mt-6">
+                    <button className="w-full bg-pink-600 text-white px-5 py-2 rounded-lg shadow hover:bg-pink-700 transition-colors duration-200">Proceed Checkout</button>
+                </div>
+            </div>
         </div>
     </div>
   )
