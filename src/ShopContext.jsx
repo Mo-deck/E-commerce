@@ -29,5 +29,29 @@ export const shopProvider = ({Children})=>{
                 }
         ]
         }
+
+        // TODO ccalculate function & update the state
+
+        calculateTotalPrice(updatedProduct);
+        dispatch({
+            type: "ADD_TO_CART",
+            payload: {
+                products: updatedProduct,
+            }
+        })
+    }
+
+    const calculateTotalPrice = (products) =>{
+        let total = 0;
+        products.forEach(product => {
+            total += product.price * product.quantity
+        });
+
+        dispatch({
+            type: "CALCULATE_TOTAL_PRICE",
+            payload:{
+                total,
+            }
+        })
     }
 }
