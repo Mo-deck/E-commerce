@@ -68,5 +68,24 @@ export const shopProvider = ({Children})=>{
            quantity: newQuantity,
         }
        }
+       calculateTotalPrice(updatedProduct)
+       dispatch({
+        type: "UPDATE_PRODUCT_QUANTITY",
+        payload: {
+            products: updatedProduct
+        }
+       })
     };
+
+    const RemoveFromCart = (product) =>{
+        const updatedProduct = state.products.filter((pro) => pro.id !== product.id)
+
+        calculateTotalPrice(updatedProduct)
+        dispatch({
+            type: "REMOVE_FROM_CART",
+            payload:{
+                products: updatedProduct,
+            }
+        })
+    }
 };
