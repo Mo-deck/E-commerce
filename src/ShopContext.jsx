@@ -88,4 +88,11 @@ export const shopProvider = ({Children})=>{
             }
         })
     }
+
+    const clearCart = () =>{
+        dispatch({
+            type: "CLEAR_CART",
+            payload: []
+        })
+    }
 };
