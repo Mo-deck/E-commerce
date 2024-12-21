@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import reducer, {initialstate} from './shopReducer'
+import shopReducer, {initialstate} from './shopReducer'
 import { Children } from 'react';
 import { useReducer } from 'react';
 
@@ -7,7 +7,21 @@ const ShopContext = createContext(initialstate);
 
 
 export const shopProvider = ({Children})=>{
-    const [state, dispatch] = useReducer(reducer, initialstate)
+    const [state, dispatch] = useReducer(shopReducer, initialstate)
+
+    const calculateTotalPrice = (products) =>{
+        let total = 0;
+        products.forEach(product => {
+            total += product.price * product.quantity
+        });
+
+        dispatch({
+            type: "CALCULATE_TOTAL_PRICE",
+            payload:{
+                total,
+            }
+        })
+    }
 
     const addToCart = (product)=>{
 
@@ -41,17 +55,18 @@ export const shopProvider = ({Children})=>{
         })
     }
 
-    const calculateTotalPrice = (products) =>{
-        let total = 0;
-        products.forEach(product => {
-            total += product.price * product.quantity
-        });
 
-        dispatch({
-            type: "CALCULATE_TOTAL_PRICE",
-            payload:{
-                total,
-            }
-        })
-    }
-}
+    const updateProductQuantity = (product, newQuantity) =>{
+        const productIndex = state.products.findIndex((p) => p.id == product.id);
+        let updatedProduct = [...state.products];
+
+       if(newQuantity < 0){
+        updatedProduct = updatedProduct.filter((pro) => pro.id !== product.id);
+       }else{
+        updatedProduct[productIndex] ={
+           ...updatedProduct[productIndex],
+           quantity: newQuantity,
+        }
+       }
+    };
+};
