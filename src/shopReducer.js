@@ -4,9 +4,9 @@
 // calculateTotal
 // Clear cart
 
-export const initialstate = {
+export const initialState = {
     products:[],
-    total
+    total: 0
 };
 
 const shopReducer = (state, action) =>{
