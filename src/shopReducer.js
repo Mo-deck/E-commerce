@@ -20,7 +20,7 @@ const shopReducer = (state, action) =>{
                 products: payload.products,
             }
 
-            case 'UPDATE_PRODUCT-QUANTITY':
+            case 'UPDATE_PRODUCT_QUANTITY':
                 return{
                     ...state,
                     products:payload.products
