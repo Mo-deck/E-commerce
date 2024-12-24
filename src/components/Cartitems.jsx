@@ -37,7 +37,7 @@ const Cartitems = () =>{
                                      onChange={ 
                                         (event)=> updateProductQuantity(product, event.target.value)
                                     }
-                                  
+                                  defaultValue={product.quantity}
                                      type="number" className="w-16 border border-gray-200 rounded-md p-2 text-center" />
                                 </div>
                             </div>
