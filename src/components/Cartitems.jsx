@@ -1,10 +1,10 @@
 import { FaTrashCan } from 'react-icons/fa6';
 import Payments from './Payments';
 import { useContext } from 'react';
-import { ShopContext } from '../ShopContext';
+import useShop, { ShopContext } from '../ShopContext';
 
 const Cartitems = () =>{
-    const context = useContext(ShopContext)
+    const {products, updateProductQuantity}= useShop()
   return (
 
     <div className="flex flex-col lg:flex-row p-4 lg:p-8 space-y-6 lg:space-y-0 lg:space-x-6">
@@ -12,9 +12,9 @@ const Cartitems = () =>{
         <div className="flex-1">
             {/* cart items section */}
             <h2 className="text-2xl font-semibold mb-4">
-               {context.products.length > 0 ? "Your Cart items" : "Your cart is empty right now please go a head add some items"}
+               {products.length > 0 ? "Your Cart items" : "Your cart is empty right now please go a head add some items"}
             </h2>
-            {context.products.map((product) => (
+            {products.map((product) => (
                 <div className="flex items-start space-x-4 mb-6">
                     <img className="w-24 h-24 object-cover rounded-lg" src={product.thumbnail} alt={product.title} />
 
@@ -33,7 +33,12 @@ const Cartitems = () =>{
                                 {/* quantity */}
                                 <div className=" flex items-center space-x-2">
                                     <label htmlFor="" className="text-sm font-semibold">Quantity</label>
-                                    <input type="number" className="w-16 border border-gray-200 rounded-md p-2 text-center" />
+                                    <input
+                                     onChange={ 
+                                        (event)=> updateProductQuantity(product, event.target.value)
+                                    }
+                                  
+                                     type="number" className="w-16 border border-gray-200 rounded-md p-2 text-center" />
                                 </div>
                             </div>
 

@@ -39,7 +39,7 @@ const shopReducer = (state, action) =>{
                 };
 
             case 'CLEAR_CART':
-                return initialstate;
+                return initialState;
 
                 default:
                     throw new Error("unknown reducer action")

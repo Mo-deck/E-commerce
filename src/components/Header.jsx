@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom' 
-import { ShopContext } from "../ShopContext";
+import useShop, { ShopContext } from "../ShopContext";
 
 const Header = () => {
-     const context = useContext(ShopContext)
-     console.log(context);
+    const {products}= useShop()
      
 
   return (
@@ -25,7 +24,9 @@ const Header = () => {
 
 
 
-              <span className="absolute -top-1 -right-1 bg-pink-600 text-white rounded-full w-5 h-5 flex items-center justify-center">0</span>
+              <span className="absolute -top-1 -right-1 bg-pink-600 text-white rounded-full w-5 h-5 flex items-center justify-center">
+                {products.length}
+              </span>
             </Link>
             </div>
           </ul>

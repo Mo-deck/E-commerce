@@ -116,14 +116,14 @@ export const ShopProvider = ({ children }) => {
 	return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 };
 
-// const useShop = () => {
-// 	const context = useContext(ShopContext);
+const useShop = () => {
+	const context = useContext(ShopContext);
 
-// 	if (context === undefined) {
-// 		throw new Error("context must be inside shop contetx");
-// 	}
+	if (context === undefined) {
+		throw new Error("context must be inside shop contetx");
+	}
 
-// 	return context;
-// };
+	return context;
+};
 
-// export default useShop;
+export default useShop;
