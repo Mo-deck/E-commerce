@@ -4,7 +4,7 @@
 // calculateTotal
 // Clear cart
 
-export const initialState = {
+export const initialState =JSON.parse(localStorage.getItem('cart_items')) || {
     products:[],
     total: 0
 };

@@ -61,7 +61,7 @@ export const ShopProvider = ({ children }) => {
 	};
 
 	const updateProductQuantity = (product, newQuantity) => {
-		console.log(product, newQuantity);
+
 		
 		const productIndex = state.products.findIndex((p) => p.id === product.id);
 		let updatedProduct = [...state.products];
