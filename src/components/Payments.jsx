@@ -1,6 +1,8 @@
 import React from 'react'
+import useShop from '../ShopContext'
 
 const Payments = () => {
+    const { total } = useShop()
   return (
     <div className="lg:w-1/3">
         <div className="border p-4 rounded-lg">
@@ -18,11 +20,11 @@ const Payments = () => {
             <div className="mt-6 border-t pt-6">
                 <div className="flex justify-between items-center mb-4">
                     <span className="text-lg font-semibold text-gray-600">Subtotal</span>
-                    <span className="text-lg font-semibold text-gray-600">$2525</span>
+                    <span className="text-lg font-semibold text-gray-600">{total}</span>
                 </div>
                 <div className="flex justify-between items-center mb-4">
                 <span className="text-2xl font-semibold text-pink-600">Subtotal</span>
-                <span className="text-2xl font-semibold text-pink-600">$2525</span>
+                <span className="text-2xl font-semibold text-pink-600">{total}</span>
                 </div>
 
                 {/* procceed */}

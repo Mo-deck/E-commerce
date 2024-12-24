@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import useShop, { ShopContext } from '../ShopContext';
 
 const Cartitems = () =>{
-    const {products, updateProductQuantity}= useShop()
+    const {products, updateProductQuantity, removeFromCart} = useShop()
   return (
 
     <div className="flex flex-col lg:flex-row p-4 lg:p-8 space-y-6 lg:space-y-0 lg:space-x-6">
@@ -43,7 +43,9 @@ const Cartitems = () =>{
                             </div>
 
                             {/* Delete button */}
-                            <button className="text-red-500 hover:text-red-700 transition-colors duration-200 ease-in-out">
+                            <button
+                             onClick={() => removeFromCart(product)}
+                            className="text-red-500 hover:text-red-700 transition-colors duration-200 ease-in-out">
                             <FaTrashCan className="w-5 h-5"/>
                             </button>
                         </div>
