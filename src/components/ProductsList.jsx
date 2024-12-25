@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Productitem from './Productitem';
 import axios from 'axios';
 import ProductLoadingSkeleton from './ProductLoadingSkeleton';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
@@ -31,14 +32,26 @@ export const ProductsList = () => {
   if(loading) return <ProductLoadingSkeleton />
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {products.length > 0 ? (
-        products.map((product) => (
-          <Productitem key={product.id} product={product} />
-        ))
-      ) : (
-        <p>Loading products...</p>
-      )}
-    </div>
+    <>
+      <div className="relative">
+        <input 
+        // ref={searchRef}
+         type="text" placeholder="Search for products...." 
+        //  value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} 
+         className="p-2 pl-10 rounded border shadow w-full focus:outline-none focus:border-pink-300" />
+         <span className="absolute left-3 top-1/2 transform-y-1/2 text-gray-400">
+         <AiOutlineSearch className="w-6 h-6 text-pink-600" />
+         </span>
+      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            {products.length > 0 ? (
+           products.map((product) => (
+             <Productitem key={product.id} product={product} />
+            ))
+          ) : (
+            <p>Loading products...</p>
+         )}
+           </div>
+    </>
   );
 };
