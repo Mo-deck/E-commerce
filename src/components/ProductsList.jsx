@@ -7,6 +7,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     // Fetch products from API
@@ -28,6 +29,24 @@ export const ProductsList = () => {
 
     fetchProducts();
   }, []);
+
+  useEffect(()=> {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true)
+        const { data } = await axios.get(`https://dummyjson.com/products/search?q=${searchTerm}`); 
+
+
+        // Filter products from index 78 to 100
+        const filteredProducts = data.products.slice(77, 120); // Index starts at 0
+        setProducts(filteredProducts);
+        setLoading(false)
+      } catch (error) {
+        setLoading(false)
+      }
+    }
+    fetchProducts()
+  }, [searchTerm])
 
   if(loading) return <ProductLoadingSkeleton />
 
