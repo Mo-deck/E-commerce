@@ -10,7 +10,7 @@ export const ProductsList = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("")
   const [originalProducts, setOriginalProducts]= useState([])
-
+  const searchRef = useRef(null)
 
   useEffect(() => {
     // Fetch products from API
@@ -21,8 +21,8 @@ export const ProductsList = () => {
 
 
         // Filter products from index 78 to 100
-        const filteredProducts = data.products.slice(77, 120); // Index starts at 0
-        setProducts(filteredProducts);
+        // const filteredProducts = data.products.slice(77, 120); // Index starts at 0
+        setProducts(data.products);
         setOriginalProducts(data.products);
         setLoading(false)
       } catch (error) {
@@ -66,7 +66,11 @@ export const ProductsList = () => {
     }
 	}, [debouncedSearchTerm]);
 
-
+  useEffect(()=>{
+    if(searchRef.current){
+      searchRef.current.focus()
+    }
+  },[products])
 
 
   if(loading) return <ProductLoadingSkeleton />
@@ -75,7 +79,7 @@ export const ProductsList = () => {
     <>
       <div className="relative">
         <input 
-        // ref={searchRef}
+        ref={searchRef}
          type="text" placeholder="Search for products...." 
          value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} 
          className="p-2 pl-10 rounded border shadow w-full focus:outline-none focus:border-pink-300" />
