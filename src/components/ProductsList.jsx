@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Productitem from './Productitem';
 import axios from 'axios';
 import ProductLoadingSkeleton from './ProductLoadingSkeleton';
@@ -8,6 +8,9 @@ export const ProductsList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("")
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("")
+  const [originalProducts, setOriginalProducts]= useState([])
+
 
   useEffect(() => {
     // Fetch products from API
@@ -20,6 +23,7 @@ export const ProductsList = () => {
         // Filter products from index 78 to 100
         const filteredProducts = data.products.slice(77, 120); // Index starts at 0
         setProducts(filteredProducts);
+        setOriginalProducts(data.products);
         setLoading(false)
       } catch (error) {
         setLoading(false)
@@ -30,23 +34,40 @@ export const ProductsList = () => {
     fetchProducts();
   }, []);
 
-  useEffect(()=> {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true)
-        const { data } = await axios.get(`https://dummyjson.com/products/search?q=${searchTerm}`); 
 
+	useEffect(() => {
+		const timerId = setTimeout(() => {
+			setDebouncedSearchTerm(searchTerm);
+		}, 300);
+		return () => {
+			clearTimeout(timerId);
+		};
+	}, [searchTerm]);
 
-        // Filter products from index 78 to 100
-        const filteredProducts = data.products.slice(77, 120); // Index starts at 0
-        setProducts(filteredProducts);
-        setLoading(false)
-      } catch (error) {
-        setLoading(false)
-      }
+	useEffect(() => {
+		if (debouncedSearchTerm) {
+			const fetchProducts = async () => {
+				try {
+					setLoading(true);
+					const { data } = await axios.get(
+						`https://dummyjson.com/products/search?q=${searchTerm}`
+					);
+
+					setProducts(data.products);
+					setLoading(false);
+				} catch (e) {
+					setLoading(false);
+					console.log(e);
+				}
+			};
+			fetchProducts();
+		}else{
+      setProducts(originalProducts)
     }
-    fetchProducts()
-  }, [searchTerm])
+	}, [debouncedSearchTerm]);
+
+
+
 
   if(loading) return <ProductLoadingSkeleton />
 
